@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <title>Tanıtım Sitesi</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-secondary ">
+        <div class="container-fluid ">
+          <p class="text-white mx-auto fw-bold mt-3 fs-1">WEATHER APPLİCATİON TANITIM</p>
+        </div>
+      </nav>
+      
+      <div class="container border border-secondary rounded mt-2">
+        <h1>Lokal Hava Durumu Uygulaması</h1>
+        <p>Lokal hava durumu projem girilen lokasyonun anlık olarak hava durumu verilerini getirmektedir.
+        <br>
+           Projeme github üzerinden aşağıdaki linkten ulaşabilirsiniz.<br>
+           <a href="https://github.com/ozdemir-furkan/weather-app">https://github.com/ozdemir-furkan/weather-app</a>
+           
+        <br>
+           Aşağıda projemi oluştururken izlediğim adımları anlatacağım..
+        </p>
+      </div>
+      <div class="container border border-secondary rounded mt-2">
+        <h1 class="fst-italic">React Uygulaması Kurulumu Ve Çalıştırma</h1>
+        <p>Bilgisayarınızda henüz React kurulumu yapmadıysanız, öncelikle node.js ve npm kurulumu yapmış olmalısınız.
+            <br>
+            Bir proje oluşturmak için, aşağıda yer alan komutları terminal ekranında çalıştırın.
+            <br>
+              <kbd>npx create-react-app my-app</kbd><br>
+              <kbd>cd my-app</kbd><br>
+              <kbd>npm start</kbd><br>
+              Projeyi çalıştırdıktan sonra <a href="http://localhost:3000/">http://localhost:3000/</a> Üzerinden Erişebilirsiniz.
+                    
+        </p>
+      </div>
+
+      <!--Nasıl Çalıştırılır-->
+      <div class="container border border-secondary rounded mt-2">
+        <h1>Uygulamam Nasıl Çalıştırılır Videosu</h1>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="video//video.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+      
+      <div class="container border border-primary rounded mt-2">
+        <div class="container border border-secondary rounded mt-1">
+
+        <h1>Projemin İlk Adımı</h1>
+        <p>Proje öğelerimdeki <strong>App.js</strong> dosyasına ilk olarak section açarak içine başlığımı koydum</p>
+        </div>
+        <div class="container border border-secondary rounded mt-1">
+            <div class="col-lg-7">
+                <p>
+                    <code class="fw-bold">
+                        &lt;section className="app"&gt;<br>
+                        &lt;div id="title">HAVA DURUMU&lt;/div&gt;<br>                        
+                        &lt;/section&gt;                              
+                    </code>
+                </p>           
+            </div>
+        </div>
+
+        
+        
+        <!--İçerikler Kısmı-->
+
+        <div class="container border border-secondary rounded mt-1 d-flex flex-row">
+            <img src="pictures//components.png" class="img-fluid" alt="Bilesenler içeriği">
+            <div class="col-lg-8 text-center">
+                <h1>İçerikler Kısmı</h1>
+                <p>
+                    Projemde Kullanacağım bileşenler için her biri ayrı olmak üzere yeni klasörler açtım <br>
+                    ve <strong>Pictures</strong> klasörüne kullanacağım resimleri ekledim.
+
+                </p>
+            </div>
+
+        </div>
+
+        <!--Arama Sekmesi -->
+
+        <div class="container border border-secondary rounded mt-1">
+            <h1>Arama Sekmesi</h1>
+            <p><strong>Components</strong> Klasörü İçindeki <strong>Search</strong> Öğesindeki <strong>SearchBar.js</strong> Dosyasına <strong>input</strong> 
+            koduyla lokasyonun girileceği arama barını ekledim ve girilen lokasyonun hava durumu
+            verilerinin alındığı apiyi <strong>fetch</strong> kodunu kullanarak kodlarım arasına ekledim. Girilen şehri yakalamak ve elde tutmak için <strong>React State</strong>
+            içinde <strong>useState</strong> kullandım. <strong>useState</strong> kodu içerisinde searchValue ve bunu belirtmek için
+            thisSearchValue parametresi oluşturdum. <strong>useState</strong> içindeki veriyi her tuşa bastığımızda değiştirmek için <strong>input</strong> içerisinde 
+            <strong>onChange</strong> kodunu kullandım. Klavyeden basılan tuşları almak için {(e)} içerisine alıyoruz ve parametrede belirtmek için <code>thisSearchValue(e.target.value)}</code>
+            kullandım. Daha sonra arama barına girilen lokasyonu enter'a bastığımızda ekrana getirmesi için bir search parametresi oluşturdum ve enter'a bastığımda gelen veriyi jsona
+            dönüştürüyorum ve gelen sonucu <code>thisWeatherForecast(result)</code> koduyla parametreme ekliyorum. <strong>App.js</strong> içinde props ettiğim 
+            <strong>thisWeatherForecast</strong> buraya geliyor.Gelen json sonuçları thisWeatherForecast adlı parametreme ekleniyor.  Apiyi Çektiğim Site:<a href="https://openweathermap.org/">https://openweathermap.org/</a>
+
+            
+          </p>
+        </div>
+
+        <div class="container border border-secondary rounded mt-1">
+          <div class="col-lg-7">
+              <p>
+                  <code class="fw-bold">
+
+                    function SearchBar({thisWeatherForecast}){ <br>
+                      const api={ <br>
+                          key: "812f710ad356397eaf02b858d1d443c1", <br>
+                          base: "https://api.openweathermap.org/data/2.5/weather" <br>  <!--APİ ADRESİ-->
+                      }; <br>
+                  
+                      const [searchValue,thisSearchValue]= useState(""); <br>
+                  
+                      const search = (e) =>{ <br>
+                          if(e.key=="Enter"){ <br>
+                              fetch(`${api.base}?q=${searchValue}&units=metric&lang=tr&appid=${api.key}`) <br>
+                              .then((data)=> data.json()) <br>
+                              .then((result)=>{ <br>
+                                  thisSearchValue(""); <br>
+                                  thisWeatherForecast(result); <br>
+                          }) <br>
+                          } <br>
+                  
+                      }         <br>         
+                    
+                    return(   <br>
+
+                    &lt;div className="search"&gt;<br> 
+                    &lt;input <br>
+                      className="search-input"<br>
+                      type="text" <br>
+                      placeholder="Şehir"<br>
+                      onChange={(e)=> thisSearchValue(e.target.value)}<br>
+                      value={searchValue}<br>
+                      onKeyPress={search}<br>
+                      /&gt; <br>
+                      &lt;/div&gt;  
+                      
+                      );
+                  </code>
+              </p>           
+          </div>
+        </div>
+
+        <!--Apideki Verileri App.jste çağırma ve Props-->
+
+        <div class="container border border-secondary rounded mt-1">
+          <h1>App.Js'e Apideki Verileri Ekleme</h1>
+          <p>
+            Arama Sekmesindeki gibi <strong>useState</strong> kullanarak weatherforecast ve thisWeatherForecast parametrelerimi oluşturdum ve değerleri
+            döndürmek için Search içine props ettim. Gelen verilerin ekrana getirilmesi için <strong>Result</strong> klasörü içindeki <strong>index.js</strong> dosyasında props ettiğim
+            <strong>weather</strong> değişkenini <strong>App.js</strong> dosyasında <strong>Result</strong> parametresine ekledim.
+          </p>
+
+        </div>
+
+      <div class="container border border-secondary rounded mt-1">
+        <div class="col-lg-7">
+          <p>
+              <code class="fw-bold">
+                function App() { <br>
+                  const [weatherforecast,thisWeatherForecast]= useState({}); <br>
+                  
+                  return ( <br>
+                    &lt;section className="app"&gt; <br>
+                      &lt;Background background={weatherforecast.weather && weatherforecast.weather[0].main} /&gt; <br>
+                      &lt;div id="title"&gt;HAVA DURUMU&lt;/div&gt; <br>
+                      &lt;Search thisWeatherForecast={thisWeatherForecast} /&gt; <br>
+                      &lt;Result weather={weatherforecast}  /&gt; <br>
+                      
+                      &lt;/section&gt; 
+                                             
+              </code>
+          </p>           
+      </div>
+     </div>
+      <!--Sonuç Sekmesi-->  
+
+      <div class="container border border-secondary rounded mt-1">
+        <h1>Sonuç Sekmesi</h1>
+        <p>
+          Apiden çektiğimiz verileri <strong>Result</strong> klasörü içindeki <strong>index.js</strong> dosyasına weather adlı bir 
+          <strong>props</strong> ekleyerek başka bileşenden
+          verileri alıyoruz. Eğerki girilen değerde api verisi bulunmuyorsa 
+          <code>typeof weather.main !="undefined"</code> koduyla uygulama ekrana veri getirmiyor.
+          Girilen değerde veriler varsa aşağıdaki kodlarla lokasyonu, derecesini, durumunu, hissedilen sıcaklığını, nemini ve rüzgarını ekrana getiriyor.
+       </p>
+      </div>
+
+      <div class="container border border-secondary rounded mt-1">
+        <div class="col-lg-7">
+            <p>
+                <code class="fw-bold">
+                  {typeof weather.main !="undefined" && (<br>
+                  &lt;div className="result"&gt;<br>
+                  &lt;div className="country"&gt;{weather.name},{weather.sys.country}&lt;/div&gt;<br>
+                  &lt;div className="detail"&gt;           <br>
+                  &lt;div className="degree"&gt;&lt;img className="logo" src={logo} alt="logo" width="100"&gt;&lt;/img&gt;&lt;/div&gt;<br>
+                  &lt;div className="degree1"&gt;{Math.round(weather.main.temp)}°c&lt;/div&gt;<br>
+                  &lt;/div&gt;<br>
+                  &lt;div className="status"&gt;{(weather.weather[0].description)}&lt;/div&gt;<br>
+                  &lt;div className="other"&gt;<br>
+                  &lt;div className="feels-like-text"&gt;&lt;pre&gt;&lt;img className="feels-like-picture" src={feelslike} alt="hissedilen" width="35"&gt;&lt;/img&gt; {Math.round(weather.main.feels_like)}°c &lt;/pre&gt;<br>
+                  &lt;div className="feels-like"&gt;Hissedilen</div&gt;<br>
+                  &lt;/div&gt;<br>
+            
+                  &lt;div className="humidity-text"&gt;&lt;pre&gt;&lt;img className="humidity-picture" src={humidity} alt="nem" width="35"&gt;&lt;/img&gt; {weather.main.humidity}%&lt;/pre&gt;<br>
+                  &lt;div className="humidity">Nem&lt;/div&gt;<br>
+                  &lt;/div&gt;<br>
+            
+                  &lt;div className="wind-text"&gt;&lt;pre&gt;&lt;img className="wind-picture" src={wind} alt="rüzgar" width="35"&gt;&lt;/img&gt; {weather.wind.speed}km/s&lt;/pre&gt;<br>
+                  &lt;div className="wind">Rüzgar&lt;/div&gt;<br>
+                  &lt;/div&gt;
+            
+                  &lt;/div&gt;<br>
+                  &lt;/div&gt;<br>
+                                 
+                </code>
+            </p>           
+        </div>
+        
+
+      </div>
+
+      <!--Arka Plan-->
+
+    <div class="container border border-secondary rounded mt-1">
+      <h1>Arka Planı Ayarlama</h1>
+      <p>
+        <strong>Background</strong> Klasörü içindeki <strong>index.js</strong> dosyasına arkaplan değiştirmesi için <strong>background</strong> isimli bir parametre oluşturdum. Klasörün içine
+        verilerin alınacağı <strong>TakePicture.js</strong> dosyasını oluşturdum ve içerisine <strong>Pictures</strong> klasörü içerindeki resimleri importladım. Hava durumlarına göre
+        ayrı ayrı resim kodları oluşturdum. TakePicture içerisinde havanın durumunu almak için <strong>situation</strong> parametresini oluşturdum. Havanın durumunu 
+        <strong>switch-case</strong> ile parametreye aktardım. <strong>situation</strong> parametresini <strong>index.js</strong> dosyasına exportlayarak arka plan ayarlama kodunu tamamladım.
+        Daha sonrasında <strong>App.js</strong> dosyasındaki Background kısmına <strong>weatherforecast</strong> parametresinde bilgi var ise
+        <strong>weatherforecast[0].main</strong> parametresini gönderiyoruz.
+
+
+      </p>
+
+    </div>
+
+    <div class="container border border-secondary rounded mt-1">
+    <div class="col-lg-7">
+      <p>
+          <code class="fw-bold">
+            function index ({ background }) { <br>
+              return( <br>
+                &lt;div className="background"&gt; <br>
+                &lt;div className="overlay"&gt;&lt;/div&gt; <br>
+                &lt;TakePicture situation={background}/&gt; <br>
+                &lt;/div&gt;      <br> 
+              );
+          }
+
+          <!--Take Picture-->
+
+          function TakePicture({situation}){ <br>
+            switch (situation){ <br>
+                case "Rain": <br>
+                    return &lt;img className="background-picture" src={rainy} alt="Yağmurlu"/&gt; <br>
+                case "Drizzle":    <br> 
+                    return &lt;img className="background-picture" src={rainy} alt="Yağmurlu"/&gt; <br>
+                case "Clear":     <br>
+                    return &lt;img className="background-picture" src={sunny} alt="Güneşli"/&gt; <br>
+                case "Fog":     <br>
+                    return &lt;img className="background-picture" src={foggy} alt="Sisli"/&gt; <br>
+                case "Mist":    <br>
+                    return &lt;img className="background-picture" src={foggy} alt="Sisli"/&gt; <br>
+                case "Smoke":   <br>  
+                    return &lt;img className="background-picture" src={foggy} alt="Sisli"/&gt; <br>
+                case "Snow":     <br>
+                    return &lt;img className="background-picture" src={snowy} alt="Karlı"/&gt; <br>
+                case "Storm":    <br>
+                    return &lt;img className="background-picture" src={stormy} alt="Fırtınalı"/&gt; <br>
+                case "Clouds":    <br>
+                    return &lt;img className="background-picture" src={cloudy} alt="Bulutlu"/&gt; <br>
+                default:     <br>
+                    return &lt;img className="background-picture" src={rainbow} alt="Gökküşağı"/&gt; <br>
+                    
+            }
+            }
+
+
+                
+          </code>
+      </p>           
+     </div>
+      
+    </div>
+    
+
+  </div>
+
+  <div class="container border border-secondary rounded mt-1">
+    <h1>Uygulamamdan Bir Kaç Resim</h1>
+    <div class="container overflow-hidden text-center">
+      <div class="row gy-5">
+        <div class="col-6">
+          <div class="p-3 border bg-light"><img src="pictures//1.png" class="img-fluid"></div>
+        </div>
+        <div class="col-6">
+          <div class="p-3 border bg-light"><img src="pictures//2.png" class="img-fluid"></div>
+        </div>
+        <div class="col-6">
+          <div class="p-3 border bg-light"><img src="pictures//3.png" class="img-fluid"></div>
+        </div>
+        <div class="col-6">
+          <div class="p-3 border bg-light"><img src="pictures//4.png" class="img-fluid"></div>
+        </div>
+        <div class="col-6">
+          <div class="p-3 border bg-light"><img src="pictures//5.png" class="img-fluid"></div>
+        </div>
+        <div class="col-6">
+          <div class="p-3 border bg-light"><img src="pictures//6.png" class="img-fluid"></div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+    
+
+    
+
+  
+
+
+
+        
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</body>
+</html>
